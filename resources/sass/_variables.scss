@@ -1,0 +1,276 @@
+// Essential Color Variables
+$black: #000 !default;
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+// Theme Colors
+$primary: #b90000 !default;
+$secondary: #ffce0a !default;
+$success: #28a745 !default;
+$info: #17a2b8 !default;
+$warning: #ffc107 !default;
+$danger: #dc3545 !default;
+$light: #f8f9fa !default;
+$dark: $gray-800 !default;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark
+) !default;
+
+// Typography Variables
+$font-family-poppins:
+    "Poppins", Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji" !default;
+$font-family-base: $font-family-poppins !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg: $font-size-base * 1.25 !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white !default;
+$body-color: $gray-900 !default;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.5 !default;
+
+$border-width: 1px !default;
+$border-color: $gray-300 !default;
+
+$border-radius: 0.25rem !default;
+$border-radius-lg: 0.3rem !default;
+$border-radius-sm: 0.2rem !default;
+
+$component-active-bg: $primary !default;
+
+// Border Variables
+$border-width: 1px !default;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y: 0.375rem !default;
+$input-btn-padding-x: 0.75rem !default;
+$input-btn-font-family: null !default;
+$input-btn-font-size: $font-size-base !default;
+$input-btn-line-height: $line-height-base !default;
+
+$input-btn-focus-width: 0.2rem !default;
+$input-btn-focus-color: rgba($component-active-bg, 0.25) !default;
+$input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
+$input-btn-padding-y-sm: 0.25rem !default;
+$input-btn-padding-x-sm: 0.5rem !default;
+$input-btn-font-size-sm: $font-size-sm !default;
+$input-btn-line-height-sm: $line-height-sm !default;
+
+$input-btn-padding-y-lg: 0.5rem !default;
+$input-btn-padding-x-lg: 1rem !default;
+$input-btn-font-size-lg: $font-size-lg !default;
+$input-btn-line-height-lg: $line-height-lg !default;
+
+$input-btn-border-width: $border-width !default;
+
+// Textfield Component Variables
+$textfield-font-size: $font-size-base !default;
+$textfield-border-height: $border-width !default;
+$textfield-padding-bottom: 0.375rem !default;
+$textfield-label-font-weight: normal !default;
+$textfield-label-line-height: 1.4 !default;
+$textfield-label-font-size: $font-size-sm !default;
+$textfield-label-color: rgba($black, 0.54) !default;
+
+$textfield-transition: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$textfield-transition-durasion: 0.2s !default;
+$textfield-focused-height: 2px !default;
+$textfield-focused-bg: $primary !default;
+
+$textfield-height-default: 3rem; // 48px - ideal untuk floating label
+$textfield-height-single: 3rem; // 48px - versi lebih ramping
+$textfield-height-sm: 2.5rem; // 40px - ukuran kecil
+$textfield-height-lg: 3.5rem; // 56px - ukuran besar
+
+$textfield-line-height: 1.375rem !default;
+$textfield-margin-bottom: 1.5rem !default;
+$textfield-margin-top: 1.5rem !default;
+
+$textfield-border-width: 2px !default;
+$textfield-border-color: $gray-400 !default;
+$textfield-border: 1px solid $textfield-border-color !default;
+$textfield-border-radius: 0.3rem !default;
+$textfield-floating-active-border-color: $textfield-focused-bg !default;
+$textfield-outline-border-defauld: $textfield-border !default;
+$textfield-outline-border-active: 2px solid $textfield-focused-bg !default;
+$textfield-outline-material-icons-color: $black !default;
+
+//
+// Checkbox
+// Checkbox Switch
+// Checkbox circle
+// Checkbox outline
+//
+
+$checkbox-transition-background-color: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$checkbox-transition-transform: transform 150ms cubic-bezier(0, 0, 0.2, 1) 0ms !default;
+$checkbox-transition-color: color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$checkbox-transition-fill: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$checkbox-transition-fillAndColor: $checkbox-transition-fill, $checkbox-transition-color !default;
+$checkbox-width: 40px;
+
+$switch-currentcolor: rgb(224, 224, 224) !default;
+$switch-shadow: 0px 0px 0px 8px !default;
+$switch-thumb-width: 20px !default;
+$switch-thumb-transition-duration: 150ms !default;
+$switch-thumb-ripple-width: 36px !default;
+
+//
+
+// Radio
+//
+
+$radio-transition-background-color: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$radio-transition-transform: transform 150ms cubic-bezier(0, 0, 0.2, 1) 0ms !default;
+$radio-transition-color: color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$radio-transition-fill: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$radio-transition-fillAndColor: $radio-transition-fill, $radio-transition-color !default;
+
+$switch-currentcolor: rgb(224, 224, 224) !default;
+$switch-shadow: 0px 0px 0px 8px !default;
+$switch-thumb-width: 20px !default;
+$switch-thumb-transition-duration: 150ms !default;
+$switch-thumb-ripple-width: 36px !default;
+
+$radio-root-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+$svg-icon-root-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+$svg-icon-root-checked-transition: transform 150ms cubic-bezier(0.4, 0, 1, 1) 0ms;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y: 0.375rem !default;
+$input-btn-padding-x: 0.75rem !default;
+$input-btn-font-family: null !default;
+$input-btn-font-size: $font-size-base !default;
+$input-btn-line-height: $line-height-base !default;
+
+$input-btn-focus-width: 0.2rem !default;
+$input-btn-focus-color: rgba($component-active-bg, 0.25) !default;
+$input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
+$input-btn-padding-y-sm: 0.25rem !default;
+$input-btn-padding-x-sm: 0.5rem !default;
+$input-btn-font-size-sm: $font-size-sm !default;
+$input-btn-line-height-sm: $line-height-sm !default;
+//
+$input-btn-padding-y-lg: 0.5rem !default;
+$input-btn-padding-x-lg: 1rem !default;
+$input-btn-font-size-lg: $font-size-lg !default;
+$input-btn-line-height-lg: $line-height-lg !default;
+
+$input-btn-border-width: $border-width !default;
+
+//
+// Forms
+//
+
+$label-margin-bottom: 0.5rem !default;
+
+$input-padding-y: $input-btn-padding-y !default;
+$input-padding-x: $input-btn-padding-x !default;
+$input-font-family: $input-btn-font-family !default;
+$input-font-size: $input-btn-font-size !default;
+$input-font-weight: $font-weight-base !default;
+$input-line-height: $input-btn-line-height !default;
+
+$input-padding-y-sm: $input-btn-padding-y-sm !default;
+$input-padding-x-sm: $input-btn-padding-x-sm !default;
+$input-font-size-sm: $input-btn-font-size-sm !default;
+$input-line-height-sm: $input-btn-line-height-sm !default;
+
+$input-padding-y-lg: $input-btn-padding-y-lg !default;
+$input-padding-x-lg: $input-btn-padding-x-lg !default;
+$input-font-size-lg: $input-btn-font-size-lg !default;
+$input-line-height-lg: $input-btn-line-height-lg !default;
+
+$input-bg: $white !default;
+$input-disabled-bg: $gray-200 !default;
+
+$input-color: $gray-700 !default;
+$input-border-color: $gray-400 !default;
+$input-border-width: $input-btn-border-width !default;
+$input-box-shadow: inset 0 1px 1px rgba($black, 0.075) !default;
+
+$input-border-radius: $border-radius !default;
+$input-border-radius-lg: $border-radius-lg !default;
+$input-border-radius-sm: $border-radius-sm !default;
+
+$input-focus-bg: $input-bg !default;
+$input-focus-border-color: lighten($component-active-bg, 25%) !default;
+$input-focus-color: $input-color !default;
+$input-focus-width: $input-btn-focus-width !default;
+$input-focus-box-shadow: $input-btn-focus-box-shadow !default;
+
+$input-placeholder-color: $gray-600 !default;
+$input-plaintext-color: $body-color !default;
+
+$input-height-border: $input-border-width * 2 !default;
+
+$input-height-inner: add($input-line-height * 1em, $input-padding-y * 2) !default;
+$input-height-inner-half: add($input-line-height * 0.5em, $input-padding-y) !default;
+$input-height-inner-quarter: add($input-line-height * 0.25em, $input-padding-y * 0.5) !default;
+
+$input-height: add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm: add($input-line-height-sm * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg: add($input-line-height-lg * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+$input-transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+$font-family-sans-serif:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;

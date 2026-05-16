@@ -1,0 +1,25 @@
+.section-login {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-test {
+    display: block;
+}
+
+.login-card {
+    @apply bg-white shadow-sm rounded-xl p-6;
+
+    &__title {
+        @apply text-2xl font-bold text-gray-800;
+    }
+}

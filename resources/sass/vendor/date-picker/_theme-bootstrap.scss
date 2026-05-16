@@ -1,0 +1,183 @@
+@use "../../index" as *;
+@use "mixins" as *;
+
+$td-active-bg: $secondary !default;
+$td-active-color: #fff !default;
+$td-border-radius: 999px !default;
+$td-btn-hover-bg: $primary !default;
+$td-disabled-color: #ccc !default;
+
+$td-font-size: 1em !default;
+$td-color: $black !default;
+
+$td-day-height: 40px !default;
+$td-day-width: 40px !default;
+$td-day-color: rgb($dark, 75%) !default;
+$td-day-active-color: rgb($black, 75%) !default;
+$td-day-old-color: rgb($td-day-color, 50%) !default;
+
+$td-day-weekend-color: #ff3d00 !default;
+$td-day-disabled: $td-disabled-color !default;
+$td-day-disabled-weekend: rgb($td-day-weekend-color, 20%) !default;
+
+.container-date-time-picker {
+    position: absolute;
+    z-index: 1000;
+}
+
+.backdrop-date-time-picker {
+    @include backdrop;
+    opacity: 0.6;
+}
+
+.tempus-dominus-widget.bootstrap {
+    width: 350px;
+    @include BoxShadow(1);
+    @include border-radius(8px);
+    border: 0;
+    padding-top: 0;
+    background: #ffffff;
+
+    @include td-calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+        padding: 12px;
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-bottom: 20px;
+        @include border-bottom-radius(8px);
+        border-bottom: 1px solid #c2c2c2;
+
+        [data-action] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        .material-icons,
+        .material-icons-outlined {
+            font-size: 32px;
+            color: #000000;
+        }
+        .picker-switch {
+            color: #000000;
+            @include poppins-black;
+        }
+    }
+
+    @include td-calendar-days {
+        grid-auto-rows: 48px;
+        .dow {
+        }
+        .dow:first-child {
+        }
+        .dow.no-highlight {
+            @include poppins-bold;
+            color: #000000;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #c2c2c2;
+            &:first-child {
+                color: $td-day-weekend-color;
+            }
+        }
+
+        .day.weekend:not(.active) {
+            color: $td-day-weekend-color;
+        }
+        .day {
+            @include size($td-day-width);
+            @include poppins-medium;
+            @include transition(background-color 0.5s ease-in-out);
+            color: #000000;
+            font-size: 1em;
+            &:active {
+                shadow: none;
+                outline: none;
+            }
+            &.disabled {
+                color: $td-disabled-color;
+                &.weekend {
+                    color: $td-day-disabled-weekend;
+                }
+            }
+            &.active.disabled {
+            }
+            &.disabled.weekend {
+            }
+            &.old.weekend:not(.disabled),
+            &.new.weekend,
+            &.weekend {
+            }
+        }
+        .day.active {
+            background-color: $td-active-bg;
+            color: $white;
+            @include BoxShadow(4);
+        }
+    }
+
+    [tabindex="-1"] {
+        @include user-select-none;
+        @include plain-hover-focus {
+            shadow: none;
+            outline: none !important;
+        }
+    }
+
+    @include td-time-container-clock {
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        @include user-select-none;
+
+        [data-action="incrementMinutes"],
+        [data-action="incrementHours"],
+        [data-action="decrementHours"],
+        [data-action="decrementMinutes"] {
+            .material-icons,
+            .material-icons-outlined {
+                font-size: 32px;
+                font-weight: $font-weight-bold;
+            }
+            @include hover-focus {
+                background: #cc0000;
+                color: #ffffff;
+                @include BoxShadow(4);
+            }
+        }
+        [data-action="showHours"],
+        [data-action="showMinutes"] {
+            @include poppins-black;
+        }
+        [data-action="showHours"],
+        [data-action="decrementHours"],
+        [data-action="showMinutes"] {
+            font-size: 1.3em;
+            color: $black;
+            font-weight: $font-weight-bold;
+            @include size($td-day-width);
+            &:hover {
+                background: #cc0000;
+                color: #ffffff;
+                @include BoxShadow(4);
+            }
+        }
+    }
+
+    .toolbar {
+        .btn-action-date-time-picker {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            padding-right: 16px;
+            @include hover {
+                background: none;
+            }
+            .btn-close {
+                @include poppins-bold;
+            }
+        }
+    }
+}
