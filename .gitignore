@@ -21,6 +21,7 @@ yarn-error.log
 
 /tests
 /node_modules       
+/resources/sass
 phpunit.xml                  
 tailwind.config.js 
 vite.config.js

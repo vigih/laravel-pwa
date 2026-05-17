@@ -1,5 +1,7 @@
 // app.scss
 @use "variables";
+@use "utilities";
+@use "layouts/layouts-index";
 @use "components/components-index";
 @use "pages/pages-index";
 @use "base/base-index";
