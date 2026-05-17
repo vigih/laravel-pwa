@@ -28,7 +28,7 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="mb-[80px]">
                 @isset($section)
                     {{ $section }}
                 @endisset
@@ -38,7 +38,7 @@
 
     <!-- Page footer -->
     <footer id="footer" class="footer fixed overflow-x-auto scrollbar-hidden bottom-0 z-[1000] w-full bg-white shadow-md border-t-[1px] border-gray-200">
-        <div class="flex">
+        <div class="flex md:justify-center">
             <x-layouts.menu-footer label="{{ __('Pesanan') }}" icon="{{ __('home') }}" />
             <x-layouts.menu-footer label="{{ __('Cek Harga') }}" icon="{{ __('taxi_alert') }}" />
             <x-layouts.menu-footer label="{{ __('Dashboard') }}" icon="{{ __('dashboard') }}" active="text-yellow-500 font-bold" :url="route('dashboard')" />
