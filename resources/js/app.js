@@ -1,5 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import collapse from '@alpinejs/collapse';
 import * as Utils from './utils/index.js';
 
 import $ from 'jquery';
@@ -25,6 +26,7 @@ import InputCurrency from './components/input-currency.js';
 import Select2Basic from './plugins/select2/select2-basic.js';
 import DateTimePicker from './plugins/date-picker/date-time-picker.js';
 
+Alpine.plugin(collapse)
 window.$ = window.jQuery = $
 window.Alpine = Alpine;
 window.popper = popper;
