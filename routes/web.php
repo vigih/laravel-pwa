@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Mock Data
+if (app()->environment('local')) {
+    Route::middleware('auth')->group(function () {
+        Route::get('/mock', [MockController::class, 'index'])->name('mock.index');
+    });
+}
 
 Route::get('/dashboard', function () {
     return view('dashboard');

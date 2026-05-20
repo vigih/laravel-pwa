@@ -1,8 +1,5 @@
 {{-- resources/views/components/layouts/section.blade.php --}}
-@props([
-    'class' => '',
-])
 
-<section class="p-2 {{ $class }}">
+<section {{ $attributes->merge(['class' => 'p-2 min-h-screen']) }} {{ $attributes }}>
     {{ $slot }}
 </section>

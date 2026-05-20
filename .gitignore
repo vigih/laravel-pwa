@@ -22,7 +22,14 @@ yarn-error.log
 
 /tests
 /node_modules       
-/resources/sass
+/resources/sass/
+
+# Mock
+/resources/views/mock/
+/app/Http/Controllers/MockController.php
+/storage/mock/
+/config/mock/
+
 phpunit.xml                  
 tailwind.config.js 
 vite.config.js

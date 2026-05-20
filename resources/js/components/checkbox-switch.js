@@ -8,6 +8,7 @@ const TAG = 'Checkbox Switch'
 const ELEMENT = '.checkbox-switch'
 const INPUT_ELEMENT = 'input.checkbox-switch-form-control[type="checkbox"]';
 const SWITCH_RIPPLE = 'switch-ripple';
+const SWITCH_LABEL = '.checkbox-switch-label';
 const CHECKED = 'checked';
 
 
@@ -41,6 +42,32 @@ export default class CheckboxSwitch {
             context.addClass(CHECKED);
             self.addRipple(context);
             this.switchCollapseShow(true);
+        }
+
+        this.#init()
+    }
+
+    #init() {
+        const $switchLabel = this.$inputCheckbox.closest('.checkbox-switch-group').find(SWITCH_LABEL)
+
+        if ($switchLabel.length > 0) {
+            const self = this;
+
+            $switchLabel.on('click', (event) => {
+                event.preventDefault()
+                const context = $(event.target).closest('.checkbox-switch-group').find(INPUT_ELEMENT);
+
+                if (self.$inputCheckbox.is(':' + CHECKED)) {
+                    self.$inputCheckbox.prop('checked', false)
+                    context.removeClass(CHECKED)
+                    self.$inputCheckbox.trigger('change')
+                } else {
+                    self.$inputCheckbox.prop('checked', true)
+                    context.addClass(CHECKED);
+                    self.$inputCheckbox.trigger('change')
+                }
+
+            })
         }
     }
 
@@ -81,4 +108,6 @@ export default class CheckboxSwitch {
     }
 }
 
-CheckboxSwitch.instance();
+document.addEventListener('DOMContentLoaded', () => {
+    CheckboxSwitch.instance();
+});

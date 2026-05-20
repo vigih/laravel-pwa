@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <x-buttons.flat class="w-full text-center mt-5" type="submit" variant="secondary" :label="__('Log in')"/>
+        <x-button.flat class="w-full text-center mt-5" type="submit" variant="secondary" :label="__('Log in')"/>
 
         <div class="block w-full mt-5 text-center">
             <span class="text-sm">Tidak punya akun?</span>
