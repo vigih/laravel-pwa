@@ -1,29 +1,40 @@
-{{-- resources/views/components/radio.blade.php --}}
+{{-- resources/views/components/radio/index.blade.php --}}
 
 @props([
     'name',
     'value',
     'label',
     'id' => null,
-    'color' => 'secondary',
+    'variant' => 'secondary',
     'checked' => false,
     'toggle' => null,
     'target' => null,
+    'inputClass' => null,
 ])
 
 @php
-    $id = $id ?? $name . '_' . $value;
+$id = $id ?? $name . '_' . rand(100, 999);
+$variants = [
+    'primary' => 'primary',
+    'secondary' => 'secondary',
+    'success' => 'success',
+    'info' => 'info',
+    'danger' => 'danger',
+    'dark' => 'dark',
+];
+$variantClass = $variants[$variant] ?? $variants['secondary'];
+$inputClass = $inputClass ? ' ' . $inputClass : null;
 @endphp
 
-<span class="radio-control-label">
-    <span class="radio-root radio-root-{{ $color }}">
+<span {{ $attributes->merge(['class' => "radio-control-label"]) }}>
+    <span class="radio-root radio-root-{{ $variantClass }}">
         <span class="radio-icon-label">
             <div class="radio-icon-root">
 
                 <input
                     type="radio"
                     id="{{ $id }}"
-                    class="radio-input form-check-input"
+                    class="radio-input form-check-input{{ $inputClass }}"
                     name="{{ $name }}"
                     value="{{ $value }}"
                     {{ $checked ? 'checked' : '' }}
