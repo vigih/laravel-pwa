@@ -20,6 +20,7 @@ yarn-error.log
 /.idea
 /.vscode
 
+/scripts/
 /tests
 /node_modules       
 /resources/sass/
@@ -30,6 +31,7 @@ yarn-error.log
 /storage/mock/
 /config/mock/
 
+.bladeformatterrc.json
 phpunit.xml                  
 tailwind.config.js 
 vite.config.js

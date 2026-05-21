@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="site-page flex justify-center min-h-screen bg-gray-100">
+    <div class="site-page flex justify-center min-h-screen bg-gray-200/75">
         <div class="site-content w-[360px]">
             <!-- Page Content -->
             <main>
@@ -29,4 +29,5 @@
     </div>
 
 </body>
+
 </html>

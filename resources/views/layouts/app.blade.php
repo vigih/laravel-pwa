@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    
+
     <div class="site-page flex justify-center min-h-screen bg-gray-100">
         <div class="site-content w-[360px]">
             <!-- Page Heading -->
@@ -46,10 +46,8 @@
             <x-layouts.menu-footer label="{{ __('Report') }}" icon="{{ __('save_as') }}" />
         </div>
     </footer>
-    
-    {{-- Form POST tersembunyi yang mengeksekusi logout --}}
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-        @csrf
-    </form>
+
+    <x-form.logout />
 </body>
+
 </html>

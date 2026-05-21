@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
+// Route::get('/mock', [MockController::class, 'index'])->name('mock.index');
 // Mock Data
 if (app()->environment('local')) {
     Route::middleware('auth')->group(function () {

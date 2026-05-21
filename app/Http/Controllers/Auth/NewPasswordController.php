@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -17,8 +20,34 @@ class NewPasswordController extends Controller
     /**
      * Display the password reset view.
      */
-    public function create(Request $request): View
+    public function create(Request $request): View|RedirectResponse
     {
+
+        $token = $request->route('token');
+        $record = DB::table('password_reset_tokens')->where('email', $request->email)->first();
+
+        // Session data notvalid
+        if (!$record) {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Email tidak valid.');
+        }
+
+        $password_timeout = config('auth.passwords.users.expire');
+        $dateNow = now()->getTimestamp();
+        $created_at = Carbon::parse($record->created_at)->addMinutes($password_timeout)->getTimestamp();
+
+        // expired
+        if ($dateNow > $created_at) {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Link reset password sudah expired.');
+        }
+
+        // Session token not valid
+        if (!Hash::check($token, $record->token)) {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Token tidak valid.');
+        }
+
         return view('auth.reset-password', ['request' => $request]);
     }
 
@@ -54,8 +83,8 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withInput($request->only('email'))
+            ->withErrors(['email' => __($status)]);
     }
 }

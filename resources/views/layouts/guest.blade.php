@@ -14,15 +14,11 @@
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                <div class="flex items-center justify-center w-full mb-8 mt-4">
-                    <img src="{{ asset('images/logo.png') }}" class="w-[180px] h-auto" />
-                </div>
-
-                {{ $slot }}
-            </div>
-        </div>
+    <body class="font-sans antialiased">
+        <main>
+            @isset($section)
+                {{ $section }}
+            @endisset
+        </main>
     </body>
 </html>
