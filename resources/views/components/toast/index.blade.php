@@ -14,7 +14,7 @@
         'info' => 'bg-cyan-500 hover:bg-cyan-600 text-white',
     ];
 
-    $icons = [
+    $textIcons = [
         'primary' => 'text-white',
         'secondary' => 'text-black',
         'warning' => 'text-black',
