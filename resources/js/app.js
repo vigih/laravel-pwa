@@ -1,6 +1,7 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse';
+import formModal from './components/form-modal.js'
 import * as Utils from './utils/index.js';
 
 import $ from 'jquery';
@@ -8,9 +9,6 @@ import moment from 'moment';
 import * as popper from '@popperjs/core/dist/esm/popper.js';
 
 import { TempusDominus } from '@eonasdan/tempus-dominus/dist/js/tempus-dominus.esm.js';
-
-import TomSelect from 'tom-select';
-import 'tom-select/dist/css/tom-select.css';
 
 // Components
 import TextfieldFloatingLabel from './components/textfield-floating-label.js';
@@ -27,12 +25,12 @@ import Select2Basic from './plugins/select2/select2-basic.js';
 import DateTimePicker from './plugins/date-picker/date-time-picker.js';
 
 Alpine.plugin(collapse)
+Alpine.data('formModal', formModal)
 window.$ = window.jQuery = $
 window.Alpine = Alpine;
 window.popper = popper;
 window.TempusDominus = TempusDominus;
 window.moment = moment;
-window.TomSelect = TomSelect;
 
 // Components
 window.Utils = Utils;

@@ -28,6 +28,11 @@
         </div>
     </div>
 
+    {{-- Page footer  --}}
+    @isset($footer)
+        {{ $footer }}
+    @endisset
+
 </body>
 
 </html>

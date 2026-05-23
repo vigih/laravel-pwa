@@ -1,6 +1,10 @@
-@props(['open' => false])
+{{-- index.blade --}}
+@props(['route'])
+<div
+    x-data="formModal(@js(route($route)))"
+    x-on:open-modal.window="open = true"
+    {{ $attributes->merge(['class' => '']) }}>
 
-<div x-data="{ open: @js($open) }" {{ $attributes->merge(['class' => '']) }}>
     @isset($trigger)
         {{ $trigger }}
     @endisset
@@ -14,7 +18,9 @@
         @endisset
 
         @isset($dialog)
-            {{ $dialog }}
+            <form @submit.prevent="submit" class="flex justify-center">
+                {{ $dialog }}
+            </form>
         @endisset
     </div>
 </div>

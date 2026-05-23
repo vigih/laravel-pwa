@@ -33,21 +33,18 @@
                     {{ $section }}
                 @endisset
             </main>
+
         </div>
     </div>
 
-    <!-- Page footer -->
-    <footer id="footer" class="footer fixed overflow-x-auto scrollbar-hidden bottom-0 z-[1000] w-full bg-white shadow-md border-t-[1px] border-gray-200">
-        <div class="flex md:justify-center">
-            <x-layouts.menu-footer label="{{ __('Pesanan') }}" icon="{{ __('home') }}" />
-            <x-layouts.menu-footer label="{{ __('Cek Harga') }}" icon="{{ __('taxi_alert') }}" />
-            <x-layouts.menu-footer label="{{ __('Dashboard') }}" icon="{{ __('dashboard') }}" active="text-yellow-500 font-bold" :url="route('dashboard')" />
-            <x-layouts.menu-footer label="{{ __('Account') }}" icon="{{ __('person_outline') }}" :url="route('profile.index')" />
-            <x-layouts.menu-footer label="{{ __('Report') }}" icon="{{ __('save_as') }}" />
-        </div>
+    {{-- Page footer --}}
+    <footer id="footer">
+        @isset($footer)
+            {{ $footer }}
+        @endisset
+        <x-footer.menu />
     </footer>
 
-    <x-form.logout />
 </body>
 
 </html>

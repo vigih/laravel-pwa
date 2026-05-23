@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\MockController;
+use App\Http\Controllers\Profile\{UpdatePasswordController, UpdateProfileController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile/password', [UpdatePasswordController::class, 'store'])->name('profile.password.update');
+    Route::post('/profile', [UpdateProfileController::class, 'store'])->name('profile.update');
 });
 
 require __DIR__ . '/auth.php';
