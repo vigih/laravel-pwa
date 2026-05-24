@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="/manifest.json" rel="manifest">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -19,7 +20,8 @@
 <body class="font-sans antialiased">
 
     <div class="site-page flex justify-center min-h-screen bg-gray-100">
-        <div class="site-content w-[360px]">
+        {{-- <div class="site-content w-[360px]"> --}}
+        <div class="site-content max-w-[500px] w-full">
             <!-- Page Heading -->
             <header id="header" class="header">
                 @isset($header)
@@ -34,16 +36,16 @@
                 @endisset
             </main>
 
+            {{-- Page footer --}}
+            <footer id="footer">
+                @isset($footer)
+                    {{ $footer }}
+                @endisset
+                <x-footer.menu />
+            </footer>
         </div>
     </div>
 
-    {{-- Page footer --}}
-    <footer id="footer">
-        @isset($footer)
-            {{ $footer }}
-        @endisset
-        <x-footer.menu />
-    </footer>
 
 </body>
 

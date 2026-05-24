@@ -24,6 +24,9 @@ import InputCurrency from './components/input-currency.js';
 import Select2Basic from './plugins/select2/select2-basic.js';
 import DateTimePicker from './plugins/date-picker/date-time-picker.js';
 
+// Core
+import registerServiceWorker from './core/service-workers.js';
+
 Alpine.plugin(collapse)
 Alpine.data('formModal', formModal)
 window.$ = window.jQuery = $
@@ -45,5 +48,7 @@ window.TextareaFloatingLabel = TextareaFloatingLabel;
 window.InputNumber = InputNumber;
 window.InputCurrency = InputCurrency;
 
+// Core 
+registerServiceWorker()
 
 Alpine.start();

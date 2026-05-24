@@ -1,8 +1,8 @@
 {{-- verify-email --}}
 <x-guest-layout>
     <x-slot name="section">
-        <x-layouts.section-guest>
-            <div class="p-3 bg-white shadow-md rounded-lg">
+        <x-section.guest>
+            <div class="p-3 w-full bg-white shadow-md rounded-lg">
                 <div class="flex justify-center mt-4">
                     <x-ui.logo />
                 </div>
@@ -20,14 +20,16 @@
                 <div class="mt-4">
                     <x-form.logout />
                     <x-form route="verification.send">
-                        <x-button.flat class="w-full text-center mt-5" type="submit" variant="secondary" label="Resend Verification Email" />
+                        <x-button.flat class="w-full text-center mt-5" type="submit" variant="secondary"
+                            label="Resend Verification Email" />
                     </x-form>
                     <x-form route="logout">
-                        <x-button.flat class="w-full text-center mt-5" type="submit" variant="danger" label="Log Out" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" />
+                        <x-button.flat class="w-full text-center mt-5" type="submit" variant="danger" label="Log Out"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" />
                     </x-form>
                 </div>
 
             </div>
-        </x-layouts.section-guest>
+        </x-section.guest>
     </x-slot>
 </x-guest-layout>

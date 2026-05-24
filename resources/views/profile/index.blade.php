@@ -2,14 +2,13 @@
 <x-app-layout>
     {{-- Page header --}}
     <x-slot name="header">
-        <x-layouts.group-header />
+        <x-header />
         @include('profile.partials.user-info')
     </x-slot>
 
     {{-- Page section --}}
     <x-slot name="section">
-
-        <x-layouts.section class="mt-[80px] !p-0">
+        <x-section.app class="mt-[80px] !p-0">
             @include('profile.partials.profile-update')
             @include('profile.partials.password-update')
 
@@ -18,8 +17,7 @@
             <x-list.item-action label="Profile Mitra" icon="corporate_fare" />
             <x-list.item-action label="Keluar Akun" icon="exit_to_app" classGroup="text-red-600"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" />
-        </x-layouts.section>
-
+        </x-section.app>
     </x-slot>
 
     {{-- Page footer --}}

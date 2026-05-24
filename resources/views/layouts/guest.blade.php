@@ -17,20 +17,21 @@
 </head>
 
 <body class="font-sans antialiased min-h-screen">
-    <div class="site-page flex justify-center min-h-screen">
-        <div class="site-content w-[360px]">
+    <div class="site-page flex justify-center flex-col items-center min-h-screen">
+        <div class="site-content max-w-[500px] w-full">
             <main>
                 @isset($section)
                     {{ $section }}
                 @endisset
             </main>
+
+            {{-- Page footer  --}}
+            @isset($footer)
+                {{ $footer }}
+            @endisset
+
         </div>
     </div>
-
-    {{-- Page footer  --}}
-    @isset($footer)
-        {{ $footer }}
-    @endisset
 </body>
 
 </html>
