@@ -20,7 +20,6 @@
 <body class="font-sans antialiased">
 
     <div class="site-page flex justify-center min-h-screen bg-gray-100">
-        {{-- <div class="site-content w-[360px]"> --}}
         <div class="site-content max-w-[500px] w-full">
             <!-- Page Heading -->
             <header id="header" class="header">

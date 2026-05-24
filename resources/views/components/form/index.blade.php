@@ -1,5 +1,5 @@
 @props(['route', 'method' => 'POST'])
-<form method="POST" action="{{ route($route) }}" {{ $attributes->merge(['class' => '']) }}>
+<form method="{{ $method }}" action="{{ route($route) }}" {{ $attributes->merge(['class' => '']) }}>
     @csrf
     {{ $slot }}
 </form>

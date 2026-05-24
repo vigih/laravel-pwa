@@ -19,21 +19,20 @@
 
 <body class="font-sans antialiased">
     <div class="site-page flex justify-center min-h-screen bg-gray-200/75">
-        <div class="site-content w-[360px]">
+        <div class="site-content max-w-[500px] w-full">
             <!-- Page Content -->
             <main>
                 @isset($section)
                     {{ $section }}
                 @endisset
             </main>
+
+            {{-- Page footer  --}}
+            @isset($footer)
+                {{ $footer }}
+            @endisset
         </div>
     </div>
-
-    {{-- Page footer  --}}
-    @isset($footer)
-        {{ $footer }}
-    @endisset
-
 </body>
 
 </html>
