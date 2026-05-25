@@ -1,9 +1,5 @@
-{{-- Error 503 - Service Unavailable --}}
 <x-error-layout>
-    <div class="text-center">
-        <img src="{{ asset('images/error/503-error.jpg') }}" alt="503" class="w-full mb-4" />
-        <h1 class="font-bold text-lg">503 - Service Unavailable</h1>
-        <p class="pt-3 mb-8">Maaf, layanan sedang tidak tersedia.</p>
-        <a href="{{ url(route('dashboard')) }}" class="bg-yellow-400 hover:bg-yellow-500 w-full py-2 text-black inline-flex items-center shadow-md justify-center font-medium rounded-lg transition-all duration-200">Kembali ke Beranda</a>
-    </div>
+    <x-error imgUrl="images/error/503-error.jpg" title="503 - Service Unavailable"
+        message="Maaf, layanan sedang tidak tersedia."
+        backUrl="/" />
 </x-error-layout>
