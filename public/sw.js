@@ -3,18 +3,70 @@ importScripts(
     'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js'
 );
 
-importScripts('/js/sw-offline.js');
+const CACHE_ASSERTS_JS = "asserts-js";
+const CACHE_ASSERTS_CSS = "asserts-css";
+const CACHE_ASSERTS_FONT = "asserts-font";
+const CACHE_ASSERTS_IMAGE = "asserts-image";
+const CACHE_OFFLINE_PAGE = "offline-page-v1";
+const OFFLINE_FALLBACK_PAGE = "offline.html";
+const CACHE_ASSETS_OFFLINE = [
+    "/",
+    "/offline.html",
+];
+
 
 workbox.setConfig({
     debug: false,
 });
 
+// OFFLINE INSTALL
+self.addEventListener('install', async (event) => {
+    event.waitUntil(
+        caches.open(CACHE_OFFLINE_PAGE)
+            .then((cache) => {
+                cache.addAll(CACHE_ASSETS_OFFLINE);
+            })
+    );
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+    event.waitUntil((async () => {
+        if ('navigationPreload' in self.registration) {
+            await self.registration.navigationPreload.enable();
+        }
+    })());
+
+    self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+    if (event.request.mode === 'navigate') {
+        event.respondWith((async () => {
+            try {
+                const preloadResp = await event.preloadResponse;
+
+                if (preloadResp) {
+                    return preloadResp;
+                }
+
+                const networkResp = await fetch(event.request);
+                return networkResp;
+            } catch (error) {
+
+                const cache = await caches.open(CACHE_OFFLINE_PAGE);
+                const cachedResp = await cache.match(OFFLINE_FALLBACK_PAGE);
+                return cachedResp;
+            }
+        })());
+    }
+});
 
 // ASSERTS JS
 workbox.routing.registerRoute(
-    new RegExp('/.*\\.js'),
+    /\.*\.js/g,
     new workbox.strategies.NetworkFirst({
-        cacheName: "asserts-js"
+        cacheName: CACHE_ASSERTS_JS
     }),
 );
 
@@ -22,15 +74,15 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
     /\/.*\.css/g,
     new workbox.strategies.NetworkFirst({
-        cacheName: "asserts-css"
+        cacheName: CACHE_ASSERTS_CSS
     }),
 );
 
 // ASSERTS FONT
 workbox.routing.registerRoute(
-    new RegExp('/.*\\.(?:eot|svg|ttf|woff|woff2)'),
+    /\.*\.?(?:eot|svg|ttf|woff|woff2)/g,
     new workbox.strategies.NetworkFirst({
-        cacheName: "asserts-font",
+        cacheName: CACHE_ASSERTS_FONT,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
                 maxEntries: 20,
@@ -45,9 +97,9 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    new RegExp('^https://fonts.gstatic.com/s/materialicons/v77/'),
+    /^https:\/\/fonts.gstatic.com\/s\/materialicons\/v77\//g,
     new workbox.strategies.NetworkFirst({
-        cacheName: "asserts-font",
+        cacheName: CACHE_ASSERTS_FONT,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
                 maxEntries: 20,
@@ -64,9 +116,9 @@ workbox.routing.registerRoute(
 
 // ASSERTS IMAGE
 workbox.routing.registerRoute(
-    new RegExp('/.*\\.(?:png|jpg|jpeg|svg|gif)'),
+    /\.*\.?(?:png|jpg|jpeg|svg|gif)/g,
     new workbox.strategies.CacheFirst({
-        cacheName: 'asserts-image',
+        cacheName: CACHE_ASSERTS_IMAGE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
                 maxEntries: 20,
@@ -74,4 +126,5 @@ workbox.routing.registerRoute(
         ],
     }),
 );
+
 
